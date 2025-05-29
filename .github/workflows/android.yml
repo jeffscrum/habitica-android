@@ -18,15 +18,13 @@ jobs:
         cache: gradle
     - name: Prepare
       run: ./.github/prepare-workflow
-    # - name: Run with Gradle
-    #   uses: gradle/gradle-build-action@v2
-    #   with:
-    #     arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
-    - name: Build release with Gradle
-      run: ./gradlew build
-    - name: Assemble with Gradle
-      # run: ./gradlew assembleRelease
-      run: ./gradlew assembleProdDebug
+    - name: Run with Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
+    # - name: Assemble with Gradle
+    #   # run: ./gradlew assembleRelease
+    #   run: ./gradlew assembleProdDebug
     - name: debug_ls
       run: |
         set -eux

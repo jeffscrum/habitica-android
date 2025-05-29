@@ -23,7 +23,7 @@ jobs:
       with:
         arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
     - name: Build with Gradle
-      run: ./gradlew assembleRelease
+      run: ./gradlew bundleRelease
     - name: debug_ls
       run: |
         set -eux

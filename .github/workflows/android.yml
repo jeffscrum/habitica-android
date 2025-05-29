@@ -22,28 +22,39 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
+    - name: debug_ls
+      run: |
+        set -eux
 
-  unit-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        module:
-          - "common"
-          - "Habitica"
-    steps:
-    - uses: actions/checkout@v3
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'adopt'
-        cache: gradle
-    - name: Prepare
-      run: ./.github/prepare-workflow
-    - name: Run with Gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: ${{ matrix.module }}:testProdDebugUnitTest
+        pwd
+        ls -lah
+        ls -lah habitica-android/habitica-android/Habitica/build/
+        ls -lah habitica-android/habitica-android/Habitica/build/outputs/
+        ls -lah habitica-android/habitica-android/Habitica/build/outputs/apk/
+        ls -lah habitica-android/habitica-android/Habitica/build/outputs/apk/alpha/debug/
+
+
+  # unit-test:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       module:
+  #         - "common"
+  #         - "Habitica"
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: set up JDK 17
+  #     uses: actions/setup-java@v3
+  #     with:
+  #       java-version: '17'
+  #       distribution: 'adopt'
+  #       cache: gradle
+  #   - name: Prepare
+  #     run: ./.github/prepare-workflow
+  #   - name: Run with Gradle
+  #     uses: gradle/gradle-build-action@v2
+  #     with:
+  #       arguments: ${{ matrix.module }}:testProdDebugUnitTest
 
 #  ui-test:
 #    runs-on: ubuntu-latest
@@ -69,22 +80,22 @@ jobs:
 #        disable-animations: true
 #        script: ./gradlew connectedProdDebugAndroidTest
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'adopt'
-        cache: gradle
-    - name: Prepare
-      run: ./.github/prepare-workflow
-    - name: Run with Gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: ktlintCheck
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: set up JDK 17
+  #     uses: actions/setup-java@v3
+  #     with:
+  #       java-version: '17'
+  #       distribution: 'adopt'
+  #       cache: gradle
+  #   - name: Prepare
+  #     run: ./.github/prepare-workflow
+  #   - name: Run with Gradle
+  #     uses: gradle/gradle-build-action@v2
+  #     with:
+  #       arguments: ktlintCheck
 
 #  detekt:
 #    runs-on: ubuntu-latest

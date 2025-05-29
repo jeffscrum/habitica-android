@@ -21,16 +21,15 @@ jobs:
     - name: Run with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
-    # - name: Assemble with Gradle
-    #   # run: ./gradlew assembleRelease
-    #   run: ./gradlew assembleProdDebug
+        # arguments: assembleProdDebug -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
+        arguments: assembleRelease -PdisablePreDex "-Dorg.gradle.jvmargs=-Xmx2g"
     - name: debug_ls
       run: |
         set -eux
 
         pwd
         ls -lah
+        ls -lah habitica-android/habitica-android/Habitica/
         ls -lah habitica-android/habitica-android/Habitica/build/
         ls -lah habitica-android/habitica-android/Habitica/build/outputs/
         ls -lah habitica-android/habitica-android/Habitica/build/outputs/apk/

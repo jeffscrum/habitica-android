@@ -25,7 +25,8 @@ jobs:
     - name: Build release with Gradle
       run: ./gradlew build
     - name: Assemble with Gradle
-      run: ./gradlew assembleRelease
+      # run: ./gradlew assembleRelease
+      run: ./gradlew assembleProdDebug
     - name: debug_ls
       run: |
         set -eux

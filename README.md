@@ -16,7 +16,7 @@ repository will allow GitHub to email you whenever we publish a release.
 
 # What's New
 
-See the project's Releases page for a list of versions with their changelogs.
+See the project's Releases page for a list of versions with their changelogs...
 
 ##### [View Releases](https://github.com/HabitRPG/habitrpg-android/releases)
 
